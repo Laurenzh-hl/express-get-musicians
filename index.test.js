@@ -40,3 +40,13 @@ describe('./bands endpoint', () => {
         expect(areAllBands).toBe(true);
     })    
 })
+
+describe('./musicians/:id endpoint', () => {
+    
+    test("correct musician is sent", async () => {
+        const response = await request(app).get("/musicians/1");
+        const responseData = JSON.parse(response.text);
+        expect(response.statusCode).toBe(200);
+        expect(responseData.id).toBe(1);
+    })    
+})
